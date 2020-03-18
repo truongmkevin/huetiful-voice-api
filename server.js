@@ -19,3 +19,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/huetiful-voice-
   .catch(err => {
     if(err) throw err;
   });
+
+
+  app.listen(PORT, () => {
+    console.log('running');
+  })
