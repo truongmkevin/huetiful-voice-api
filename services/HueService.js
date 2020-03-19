@@ -1,6 +1,9 @@
-// export default class HueService {
+const axios = require('axios')
 
-//     async RegisterHub(hubData) {
-//         return true;
-//     }
-// };
+const HueService = {
+    getAllHubs: async () => {
+        return await axios.get('https://www.meethue.com/api/nupnp')
+    }
+}
+
+module.exports = HueService;
