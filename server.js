@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+require('./router')(app);
 app.get('/testroute', (req, res) => {
   res.send("Hello, Huetiful Voice!");
 });
