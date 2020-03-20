@@ -1,9 +1,10 @@
 const express = require ('express');
 const bodyParser = require ('body-parser');
 const mongoose = require ('mongoose');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5001;
 
 const app = express();
+mongoose.set('useFindAndModify', false);
 
 require('./router')(app);
 app.get('/testroute', (req, res) => {
@@ -20,8 +21,3 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/huetiful-voice-
   .catch(err => {
     if(err) throw err;
   });
-
-
-  app.listen(PORT, () => {
-    console.log('running');
-  })
