@@ -10,7 +10,7 @@ app.get('/testroute', (req, res) => {
   res.send("Hello, Huetiful Voice!");
 });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/huetiful-voice-api")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/huetiful-voice-api", { useNewUrlParser: true })
   .then(() => {
     console.log("Connection to DB successful.");
     app.listen(PORT, function() {
