@@ -1,23 +1,10 @@
 const mongoose = require('mongoose');
-<<<<<<< HEAD
-=======
 const bcrypt = require('bcrypt');
->>>>>>> authentication working
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     first_name: String,
     last_name: String,
-<<<<<<< HEAD
-    email_address: {
-        type: String,
-        // match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, `Please fill valid email address`],
-        validate: (email) => email.length > 6
-    },
-    hubs: [{
-        type: Schema.Types.ObjectId,
-        ref: "HueHub"
-=======
     email: {
         type: String,
         minLength: 10,
@@ -43,14 +30,11 @@ const UserSchema = new Schema({
     hubs: [{
         type: Schema.Types.ObjectId,
         ref: "Hub"
->>>>>>> authentication working
     }],
 }, {
     timestamps: true
 });
 
-<<<<<<< HEAD
-=======
 UserSchema.methods = {
     checkPassword: function(input) {
         console.log(input, this.password)
@@ -72,7 +56,6 @@ UserSchema.pre('save', function(next) {
     }
 })
 
->>>>>>> authentication working
 const UserModel = mongoose.model('User', UserSchema);
 
 module.exports = UserModel;
