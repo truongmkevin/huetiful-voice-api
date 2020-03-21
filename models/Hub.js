@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const HueHubSchema = new Schema({
+const HubSchema = new Schema({
+    name: String,
     hub_id: String,
     hub_ip: String,
-    user_id: String
+    hub_user: String,
+    hub_type: String, 
+    devices: [{
+        type: Schema.Types.ObjectId,
+        ref: "Device"
+    }]
 });
 
-const HubModel = mongoose.model('HueHub', HueHubSchema);
+const Hub = mongoose.model('Hub', HubSchema);
 
-module.exports = HubModel;
+module.exports = Hub;
