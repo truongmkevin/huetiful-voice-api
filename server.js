@@ -1,10 +1,27 @@
 const express = require ('express');
+const session = require('express-session')
 const bodyParser = require ('body-parser');
+const passport = require('./auth/passport');
+
 const mongoose = require ('mongoose');
-const PORT = process.env.PORT || 5001;
+mongoose.set('useFindAndModify', false);
+
+const PORT = process.env.PORT || 3001;
 
 const app = express();
-mongoose.set('useFindAndModify', false);
+app.use(express.json()) 
+// Sessions
+app.use(
+	session({
+		secret: 'fraggle-rock', //pick a random string to make the hash that is generated secure
+		resave: false, //required
+		saveUninitialized: false //required
+	})
+)
+
+// Passport
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
 
 require('./router')(app);
 app.get('/testroute', (req, res) => {
