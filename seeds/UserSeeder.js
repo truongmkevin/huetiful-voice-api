@@ -14,12 +14,13 @@ module.exports = async () => {
      */
     const users = new Array(20)
                 .fill(null)
-                .map( (obj, i) => 
+                .map((obj, i) => 
                     obj =  {
                         first_name: faker.name.firstName(),
                         last_name: faker.name.lastName(),
-                        email_address: faker.internet.email(),
-                        hue_hubs: [hubs[i]._id || null]
+                        email: faker.internet.email(),
+                        password: '0AbCdEf%',
+                        hubs: [hubs[i]._id || null]
                     })
     
     try {

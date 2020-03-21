@@ -8,7 +8,9 @@ module.exports = async () => {
             .map((hub, i) => hub = {
                 hub_id: utils.generateObjectId(),
                 hub_ip: faker.internet.ip(),
-                name: faker.internet.mac()
+                name: faker.internet.mac(),
+                hub_user: utils.generateObjectId(),
+                hub_type: 'Hue',
             })
             
     try {
