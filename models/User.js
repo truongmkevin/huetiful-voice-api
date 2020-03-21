@@ -35,6 +35,8 @@ const UserSchema = new Schema({
     timestamps: true
 });
 
+UserSchema.index({background: false})
+
 UserSchema.methods = {
     checkPassword: function(input) {
         console.log(input, this.password)

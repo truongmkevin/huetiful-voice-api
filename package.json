@@ -7,7 +7,10 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "nodemon server.js",
-    "test": "nyc --reporter=text --reporter=html mocha --recursive test"
+    "test": "nyc --reporter=text --reporter=html mocha --recursive test",
+    "db:seed": "node seeds/seeder.js",
+    "db:drop": "node seeds/seeder.js --drop-only",
+    "db:seed:fresh": "node seeds/seeder.js --drop-all"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "faker": "^4.1.0",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.4",
     "passport": "^0.4.1",

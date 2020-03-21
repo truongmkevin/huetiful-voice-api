@@ -4,7 +4,10 @@ const bodyParser = require ('body-parser');
 const passport = require('./auth/passport');
 
 const mongoose = require ('mongoose');
+mmongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 const PORT = process.env.PORT || 3001;
 
