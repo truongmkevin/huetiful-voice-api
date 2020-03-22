@@ -13,7 +13,7 @@ passport.serializeUser((user, done) => {
 	console.log('*** serializeUser called, user: ')
 	console.log(user) // the whole raw user object!
 	console.log('---------')
-	done(null, { _id: user._id })
+	done(null, { _id: user._id})
 })
 
 // user object attaches to the request as req.user
@@ -63,7 +63,7 @@ passport.use(
     'jwt',
     new JWTstrategy(opts, async (jwt_payload, done) => {
         try {
-            const user = await User.find({email: jwt_payload.email})
+            const user = await User.findById(jwt_payload.id)
             if (user) {
                 console.log('user found in db in passport');
                 // note the return removed with passport JWT - add this return for passport local

@@ -4,7 +4,7 @@ const bodyParser = require ('body-parser');
 const passport = require('./auth/passport');
 
 const mongoose = require ('mongoose');
-mmongoose.set('useNewUrlParser', true);
+mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
@@ -35,7 +35,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/huetiful-voice-
   .then(() => {
     console.log("Connection to DB successful.");
     app.listen(PORT, function() {
-      console.log(`API Server now listening on PORT ${PORT}!`);
+      console.log(`API Server now listening on PORT ${PORT}! \n\n`);
+      console.log(app._router)
     });
   })
   .catch(err => {

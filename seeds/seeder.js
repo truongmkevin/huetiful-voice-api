@@ -34,8 +34,10 @@ const ClearData = async (conn, enabled = false) => {
 const run = async () => {
     const db = await mongoose.connect(dbConf, { useNewUrlParser: true, useUnifiedTopology: true })
     await ClearData(db.connection, commands.includes('--drop-all'))
-    await HubSeeder()
-    await UserSeeder()
+    if(!commands.includes('--drop-only')) {
+        await HubSeeder()
+        await UserSeeder()
+    }
     process.exit(0)
 }
 
