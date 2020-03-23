@@ -18,7 +18,7 @@ module.exports = {
                 newHub.save().then(hub => {
                     console.log(hub)
                     UserModel
-                        .findByIdAndUpdate({_id: req.params.userId}, {$push: {hubs: hub._id}}).exec((err, data) => console.log(data))
+                        .findByIdAndUpdate({_id: req.user._id}, {$push: {hubs: hub._id}}).exec((err, data) => console.log(data))
                 });
             })
 
@@ -26,12 +26,12 @@ module.exports = {
         }
     },
     getAll: async (req, res) => {
-        const userHubs = await UserModel.findById({_id: req.params.userId}).populate('hubs')
+        const userHubs = await UserModel.findById({_id: req.user._id}).populate('hubs')
         res.json(userHubs)
     },
     registerUser: async (req, res) => {
-        const userHubs = await UserModel.findById({_id: req.params.userId}).populate('hubs')
-        const resp = await HueService.createUserLink('app', req.params.userId, userHubs.hubs[0].hub_ip)
+        const userHubs = await UserModel.findById({_id: req.user._id}).populate('hubs')
+        const resp = await HueService.createUserLink('app', req.user._id, userHubs.hubs[0].hub_ip)
         if(resp.data[0].error) {
             // handle errors
             if(resp.data[0].error.type === 101) {

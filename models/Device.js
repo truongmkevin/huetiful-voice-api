@@ -2,17 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const DeviceSchema = new Schema({
+    device_id: String,
     name: String,
-    status: String,
+    mac: String,
     active: Boolean,
-    state: Integer,
+    state: Object,
     type: String,
-    hubs: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Hub"
-        }
-    ]
+    brand: String,
+    hub: String,
+    misc: Object
 });
 
 const Device = mongoose.model('Device', DeviceSchema);

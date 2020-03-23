@@ -4,7 +4,7 @@ const bodyParser = require ('body-parser');
 const passport = require('./auth/passport');
 
 const mongoose = require ('mongoose');
-mmongoose.set('useNewUrlParser', true);
+mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);

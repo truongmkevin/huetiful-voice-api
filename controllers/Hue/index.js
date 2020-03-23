@@ -20,7 +20,8 @@ module.exports = (router) => {
     router.get('/hubs/link', HueController.hubs.registerUser)
 
     /** devices */
-    // router.get('/hubs/:hubId/devices', HueController.devices.get)
+    router.get('/hubs/:hubId/lights', HueController.devices.getLights)
+    router.get('/hubs/:hubId/lights/fetch', HueController.devices.fetchAllLights)
 
     /** single device routes */
     router.get('/hubs/:hubId/devices/:deviceId', HueController.device.get)
