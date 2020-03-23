@@ -19,8 +19,8 @@ const HueService = {
         return await axios.post(`http://${hub_ip}/api`, postBody)
     },
     devices: {
-        getLights: async function(ip, username) {
-            return await axios.get(`${HueService.getBaseUrl(ip, username)}/lights`)
+        getDevices: async function(ip, username, type) {
+            return await axios.get(`${HueService.getBaseUrl(ip, username)}/${type}`)
         }
     }
 }
