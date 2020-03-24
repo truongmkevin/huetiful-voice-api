@@ -23,14 +23,12 @@ module.exports = (router) => {
     router.get('/hubs/:hubId/lights', HueController.devices.getLights)
     router.get('/hubs/:hubId/lights/fetch', HueController.devices.fetchAllLights)
 
-    router.get('/hubs/:hubId/lights', HueController.devices.getSensors)
-    router.get('/hubs/:hubId/lights/fetch', HueController.devices.fetchSensors)
+    router.get('/hubs/:hubId/sensors', HueController.devices.getSensors)
+    router.get('/hubs/:hubId/sensors/fetch', HueController.devices.fetchSensors)
     
 
     /** single device routes */
-    router.get('/hubs/:hubId/devices/:deviceId', HueController.device.get)
-    router.post('/hubs/:hubId/devices/:deviceId', HueController.device.add)
-    router.put('/hubs/:hubId/devices/:deviceId', HueController.device.edit)
+    router.post('/hubs/:hubId/devices/:deviceId', HueController.device.setState)
     router.delete('/hubs/:hubId/devices/:deviceId', HueController.device.delete)
 
     return router;

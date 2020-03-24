@@ -11,7 +11,7 @@ module.exports = {
     getLights: async (req, res) => {
         try {
             const hub = await Hub.findById({_id: req.params.hubId}).populate('devices')
-            res.json(hub.devices.map(device => device.type === 'Light'))
+            res.json(hub.devices.filter(device => device.type === 'Light'))
         } catch(err) {
             res.json(err)
         }

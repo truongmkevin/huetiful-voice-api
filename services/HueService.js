@@ -19,8 +19,20 @@ const HueService = {
         return await axios.post(`http://${hub_ip}/api`, postBody)
     },
     devices: {
-        getDevices: async function(ip, username, type) {
+        getAll: async function(ip, username, type) {
             return await axios.get(`${HueService.getBaseUrl(ip, username)}/${type}`)
+        },
+        getOne: async function(ip, username, type, id) {
+            return await axios.get(`${HueService.getBaseUrl(ip, username)}/${type}/${id}`)
+        },
+        nameDevice: async function(ip, username, type, id, payload) {
+            return await axios.put(`${HueService.getBaseUrl(ip, username)}/${type}/${id}`, payload)
+        },
+        setState: async function(ip, username, type, id, payload) {
+            return await axios.put(`${HueService.getBaseUrl(ip, username)}/${type}/${id}/state`, payload)
+        },
+        deleteDevice: async function(ip, username, type, id) {
+            return await axios.delete(`${HueService.getBaseUrl(ip, username)}/${type}/${id}`)
         }
     }
 }
