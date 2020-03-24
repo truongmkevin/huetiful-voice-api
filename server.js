@@ -1,7 +1,7 @@
 const express = require ('express');
 const session = require('express-session')
-const bodyParser = require ('body-parser');
 const passport = require('./auth/passport');
+const cors = require('cors');
 
 const mongoose = require ('mongoose');
 mongoose.set('useNewUrlParser', true);
@@ -12,7 +12,9 @@ mongoose.set('useUnifiedTopology', true);
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-app.use(express.json()) 
+
+app.use(express.json())
+
 // Sessions
 app.use(
 	session({
@@ -25,6 +27,9 @@ app.use(
 // Passport
 app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
+
+// CORS
+app.use(cors())
 
 require('./router')(app);
 app.get('/testroute', (req, res) => {
