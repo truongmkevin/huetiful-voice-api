@@ -12,8 +12,8 @@ mongoose.set('useUnifiedTopology', true);
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-
-app.use(express.json())
+app.use(express.json()) 
+app.use(cors())
 
 // Sessions
 app.use(
